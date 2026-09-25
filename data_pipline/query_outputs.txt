@@ -1,0 +1,150 @@
+
+============================================================
+Q1_SELECT_WHERE_ORDER_LIMIT
+============================================================
+SQL Query:
+SELECT title, price_gbp, rating
+            FROM books
+            WHERE rating >= 4
+            ORDER BY price_gbp DESC
+            LIMIT 10;
+
+Output:
+                                                                                                    title  price_gbp  rating
+                                                             The Death of Humanity: and the Case for Life      58.11       4
+                                                                                      The Past Never Ends      56.50       4
+                                                                    Sapiens: A Brief History of Humankind      54.23       5
+                                                  Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)      52.29       5
+                                                                                      Behind Closed Doors      52.22       4
+                                                                             We Love You, Charlie Freeman      50.27       5
+                                                                                            Sharp Objects      47.82       4
+                                                                              Private Paris (Private #10)      47.61       5
+                                                                                           Wall and Piece      44.18       4
+Unseen City: The Majesty of Pigeons, the Discreet Charm of Snails & Other Wonders of the Urban Wilderness      44.18       4
+
+
+============================================================
+Q2_ORDER_BY_LIMIT
+============================================================
+SQL Query:
+SELECT title, price_inr
+            FROM books
+            ORDER BY price_inr DESC
+            LIMIT 10;
+
+Output:
+                                                                                                                          title  price_inr
+                                                                                   The Death of Humanity: and the Case for Life    6130.60
+                                                                                                 Slow States of Collapse: Poems    6046.20
+                                             Our Band Could Be Your Life: Scenes from the American Indie Underground, 1981-1991    6039.88
+                                                                                                            The Past Never Ends    5960.75
+The Pioneer Woman Cooks: Dinnertime: Comfort Classics, Freezer Food, 16-Minute Meals, and Other Delicious Ways to Solve Supper!    5951.25
+                                                                                                              Masks and Shadows    5950.20
+                                                                                                The Secret of Dreadwillow Carse    5921.72
+                                                                 The Electric Pencil: Drawings from Inside State Hospital No. 3    5914.33
+                                                                                                  Birdsong: A Story in Pictures    5764.52
+                                                                                          Sapiens: A Brief History of Humankind    5721.26
+
+
+============================================================
+Q3_DISTINCT
+============================================================
+SQL Query:
+SELECT DISTINCT rating
+            FROM books
+            ORDER BY rating;
+
+Output:
+ rating
+      1
+      2
+      3
+      4
+      5
+
+
+============================================================
+Q4_BETWEEN
+============================================================
+SQL Query:
+SELECT title, price_gbp
+            FROM books
+            WHERE price_gbp BETWEEN 20 AND 40
+            ORDER BY price_gbp;
+
+Output:
+                                                                                                                                                                          title  price_gbp
+                                                                                             The Inefficiency Assassin: Time Management Tactics for Working Smarter, Not Longer      20.59
+                                                                                                                                                          Shakespeare's Sonnets      20.66
+                                                                                                                                      In the Country We Love: My Family Divided      22.00
+                                                                    America's Cradle of Quarterbacks: Western Pennsylvania's Football Factory from Johnny Unitas to Joe Montana      22.50
+                                                                                 The Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics      22.60
+                                                                                                                                                                The Requiem Red      22.65
+                                                                                                             #HigherSelfie: Wake Up Your Life. Free Your Soul. Find Your Tribe.      23.11
+                                                                                                                                                              The Elephant Tree      23.82
+                                                                                                                                                                           Olio      23.88
+                         The Mindfulness and Acceptance Workbook for Anxiety: A Guide to Breaking Free from Anxiety, Phobias, and Worry Using Acceptance and Commitment Therapy      23.89
+                                                                                                                                  Saga, Volume 6 (Saga (Collected Editions) #6)      25.02
+                                                                                                                                                     Chase Me (Paris Nights #2)      25.27
+                                                                         Unbound: How Eight Technologies Made Us Human, Transformed Society, and Brought Our World to the Brink      25.52
+                                                                                                                                                          Reasons to Stay Alive      26.41
+Foolproof Preserving: A Guide to Small Batch Jams, Jellies, Pickles, Condiments, and More: A Foolproof Guide to Making Small Batch Jams, Jellies, Pickles, Condiments, and More      30.52
+                                                                                                      The Five Love Languages: How to Express Heartfelt Commitment to Your Mate      31.05
+                                                                                                    Throwing Rocks at the Google Bus: How Growth Became the Enemy of Prosperity      31.12
+                                                                                                                                                               When We Collided      31.77
+                                                                                                            The Activist's Tao Te Ching: Ancient Advice for a Modern Revolution      32.24
+                                                                                                                                                                    Penny Maybe      33.29
+                                                                                                                             The Dirty Little Secrets of Getting Your Dream Job      33.34
+                                                                                                                                          My Paris Kitchen: Recipes and Stories      33.37
+                                                                                                                                                 You can't bury them all: Poems      33.63
+                                                                                                                                                                     Black Dust      34.53
+                                                                                                                                                      Rip it Up and Start Again      35.02
+                                                                                                                                                                           Join      35.67
+            Political Suicide: Missteps, Peccadilloes, Bad Calls, Backroom Hijinx, Sordid Pasts, Rotten Breaks, and Just Plain Dumb Mistakes in the Annals of American Politics      36.28
+                                                                                                                                                         The Bear and the Piano      36.89
+                                                                                                                      The Gutsy Girl: Escapades for Your Life of Epic Adventure      37.13
+                                                                                                                                                                How Music Works      37.32
+                                                                                                                          Mesaerion: The Best Science Fiction Stories 1800-1849      37.59
+                                                                                                                                       The Nameless City (The Nameless City #1)      38.16
+                                                                                                                                                                       Security      39.25
+                                                                                                                                                                    Soul Reader      39.58
+
+
+============================================================
+Q5_JOIN
+============================================================
+SQL Query:
+SELECT
+                b.title,
+                b.price_gbp,
+                b.rating,
+                c.category_name
+            FROM books AS b
+            JOIN categories AS c
+                ON b.category_id = c.category_id
+            ORDER BY b.rating DESC
+            LIMIT 20;
+
+Output:
+                                                                             title  price_gbp  rating   category_name
+                                             Sapiens: A Brief History of Humankind      54.23       5         History
+                                                                       Set Me Free      17.46       5     Young Adult
+                           Scott Pilgrim's Precious Little Life (Scott Pilgrim #1)      52.29       5  Sequential Art
+                                                         Rip it Up and Start Again      35.02       5           Music
+                                                        Chase Me (Paris Nights #2)      25.27       5         Romance
+                                                                        Black Dust      34.53       5         Romance
+                           Worlds Elsewhere: Journeys Around Shakespeareâs Globe      40.30       5      Nonfiction
+                        The Four Agreements: A Practical Guide to Personal Freedom      17.66       5    Spirituality
+                                                                 The Elephant Tree      23.82       5        Thriller
+                                                                    Sophie's World      15.94       5      Philosophy
+                                                       Private Paris (Private #10)      47.61       5         Fiction
+                #HigherSelfie: Wake Up Your Life. Free Your Soul. Find Your Tribe.      23.11       5      Nonfiction
+                                                      We Love You, Charlie Freeman      50.27       5         Fiction
+                                                                            Thirst      17.27       5         Fiction
+The Inefficiency Assassin: Time Management Tactics for Working Smarter, Not Longer      20.59       5         Default
+               The Activist's Tao Te Ching: Ancient Advice for a Modern Revolution      32.24       5    Spirituality
+ Princess Jellyfish 2-in-1 Omnibus, Vol. 01 (Princess Jellyfish 2-in-1 Omnibus #1)      13.61       5  Sequential Art
+                                  Princess Between Worlds (Wide-Awake Princess #5)      13.34       5         Fantasy
+                                                                              Join      35.67       5 Science Fiction
+                                                                     Sharp Objects      47.82       4         Mystery
+
